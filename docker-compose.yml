@@ -1,0 +1,16 @@
+services:
+  postgresdb:
+    container_name: epl_pipeline
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_HOST=${DB_HOST}
+    ports:
+      - ${DB_PORT}:5432
+    volumes:
+      - postgresdb_data:/var/lib/postgresql/data
+
+volumes:
+  postgresdb_data:
